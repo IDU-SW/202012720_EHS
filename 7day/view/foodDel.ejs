@@ -1,0 +1,22 @@
+<html>
+<head>
+   <meta charset="UTF-8" />
+    <title>FOOD</title>
+</head>
+<body>
+    <h1>상세보기</h1>
+    
+    음식 : <%= detail.food %>    </br>
+    
+    종류 : <%= detail.kind %>    </br>
+    특징 : <%= detail.explanation %>   </br>
+    
+    </br>
+
+    <form name="detail" method="post" action="/foods/delete">
+        <input type="hidden" name="id" value="<%= detail.id %>">
+        <input type="button" value="수정" onclick="location.href='/food/detail/<%= detail.id %>'">&nbsp;
+        <input type="submit" value="삭제">
+    </form>  
+</body>
+</html>
