@@ -17,9 +17,9 @@ module.exports = router;
 
 
 
-function showFoodList(req, res) {
-    const foodList = foods.getFoodList();
-    res.render('food', {foods:foodList, count:foodList.length})
+async function showFoodList(req, res) {
+    const foodList = await foods.getFoodList();
+    res.render('food', { foods: foodList, count: foodList.length })
 }
 
 async function showFoodDetail(req, res) {
@@ -36,6 +36,7 @@ async function showFoodDetail(req, res) {
         res.status(error.code).send({msg:error.msg});
     }
 }
+
 
 // 음식 추가
 async function addFood(req, res) {

@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "user": "hak",
+    "password": "cometrue",
+    "port": 3306,
+    "database": "foods"
+ }

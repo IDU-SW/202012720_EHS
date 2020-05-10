@@ -53,16 +53,17 @@ class Food {
         });
     }
 
-    deleteFood(foodId) {
+  
+    deleteFood(id) {
         return new Promise((resolve, reject) => {
             for (var food of this.foods ) {
-                if ( food.id == foodId ) {
-                    this.foods.pop(food);
+                if ( food.id == id ) {
+                    this.foods.splice(id, 1);
                     resolve(food);
                     return;
                 }
             }
-            reject({msg:'Can not find that named food', code:404});
+            reject({msg:'Can not find food!', code:404});
         });
     }
 }
