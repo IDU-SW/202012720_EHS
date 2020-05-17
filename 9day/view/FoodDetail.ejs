@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+
+</head>
+<body>
+    <form name="input" method="POST" action="../Food/<%= data.id %>">
+        <h1>음식 상세보기</h1>
+    
+                
+                    이름 : <%= data.name %> <br>
+                    종류 : <%= data.kind %> <br>
+                    설명 : <%= data.explanation %>  <br>         
+                    기본 이미지 :<br>
+                    <img src="/<%= image.image %> " /><br>
+               
+        
+        <br><br>
+            <input type="button" value="목록보기"onclick="history.back(-1)">
+            <input type="button" value="음식수정" onclick="location.href='http://localhost:3000/FoodUpdate/<%= data.id %>'">
+            <input type="submit" value="삭제">
+    </form>  
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head>
+   <meta charset="UTF-8" />
+    <title>FOOD</title>
+</head>
+<body>
+    <h1>음식추가</h1>
+    <form name="input" method="POST" action="./Food" enctype="multipart/form-data">
+<pre>
+이름: <input type="text" name="name" style="width:200px;"></br></br>
+종류: <input type="text" name="kind" style="width:200px;"></br></br>
+특징: <input type="text" name="explanation" style="width:600px;"></br></br>
+이미지 : <input type="file" name="thumbnail"> <br><br>
+
+<p>
+<input type="submit" value="음식추가">  
+<input type="button" value="돌아가기" onclick="history.back(-1)">
+</p>
+</pre>
+    </form>
+</body>
+</html>
