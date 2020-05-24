@@ -1,0 +1,22 @@
+<html>
+<head>
+   <meta charset="UTF-8" />
+    <title>food_list</title>
+</head>
+<body>
+    <h1>(음식목록)</h1>
+
+    <% foods.forEach(function(item) { %>
+    <h3><a href='/foods/<%= item._id %>'>번호 : <%= item._id %></a></h3>
+    
+        음식 : <%= item.name %>  <br>
+        분류 : <%= item.kind %>  <br>
+        분류 : <%= item.explanation %>  <br>
+    
+    <% }) %>
+
+    <p>
+    <input type="button" value="추가" style="width:80" onclick="location.href='/food/add'">
+    </p>
+</body>
+</html>
