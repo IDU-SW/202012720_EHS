@@ -1,0 +1,97 @@
+<html>
+<head>
+   <meta charset="UTF-8" />
+    <title>food_list</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div id="loginform" style="display:none;">
+        로그인: 
+        <input type="text" id="userId" placeholder="User ID">
+        <input type="password" id="userPw" placeholder="Password">
+        <input type="button" onclick="login()" value="로그인">
+        <input type="button" onclick="logout()" value="로그아웃">
+    </div>
+
+    <h3>(음식 목록)</h3>
+    <br>
+
+    <% foods.forEach(function(item) { %>
+    <h3><a href='/foods/<%= item.id %>'>번호 : <%= item.id %></a></h3>
+    
+        음식 : <%= item.food %>  <br>
+        분류 : <%= item.kind %>  <br>
+        분류 : <%= item.explanation %>  <br>
+    
+    <% }) %>
+
+    <input type="button" id="tag_sub" onclick="login_sub()" value="음식추가하기">
+
+    <p>
+    <input type="button" id="tagID" value="음식 추가" style="width:80;display:none;" onclick="location.href='/food/add'">
+    </p>
+    
+ <script>
+      $(document).ready(function () {
+         console.log('ready!');
+      });
+
+      function login() {
+         var id = $("#userId").val();
+         var pw = $("#userPw").val();
+         $.ajax({
+            url: '/login',
+            type: 'post',
+            data: `id=${id}&password=${pw}`
+         }).done((data) => {
+           
+            alert('로그인 성공');
+            $("#login-result").text(data);
+            $("#tagID").show(); 
+            $("#tag_sub").hide();  
+         }).fail((err) => {
+                     
+            alert('로그인 실패');
+            $("#login-result").text(err.statusText);
+         });
+      }
+
+      function login_sub() {
+         var id = $("#userId").val();
+         var pw = $("#userPw").val();
+
+         $.ajax({
+            url: '/login',
+            type: 'post',
+            data: `id=${id}&password=${pw}`
+         }).done((data) => {
+           
+            alert('로그인 성공');
+            $("#login-result").text(data);
+            $("#tagID").show();
+         }).fail((err) => {
+                   
+            alert('로그인 하시면 음식 추가 가능합니다.');
+            $("#loginform").show();  
+            $("#login-result").text(err.statusText);
+         });
+      }
+
+      function logout() {
+         $.ajax({
+            url: '/logout',
+            type: 'delete'
+         }).done((data) => {
+           
+            $("#login-result").text("로그아웃 성공");  
+         }).fail((err) => {
+                     
+            $("#login-result").text("로그아웃 실패");
+         });
+      }
+        
+      </script>
+</body>
+</html>

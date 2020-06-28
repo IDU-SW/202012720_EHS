@@ -157,7 +157,7 @@ class Food {
         }
     }
 
-    // 해당 characterId 의 캐릭터를 삭제한다.
+
     async deleteFood(foodId) {
         try {
             let result = await Foods.destroy({where: {id:foodId}});
