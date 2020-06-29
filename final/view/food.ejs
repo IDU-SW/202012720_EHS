@@ -1,0 +1,178 @@
+<html>
+    <head>
+       <title>음식리스트</title>
+       <meta charset="UTF-8" />
+       <meta name="viewport" content="width=device-width, initial-scale=1"> <!— CSS —>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> <!— JS —>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+    </head>
+    <body >
+      <div id="loginform" style="display:none;">
+         로그인: 
+         <input type="text" id="userId" placeholder="User ID">
+         <input type="password" id="userPw" placeholder="Password">
+         <input type="button" onclick="login()" value="로그인">
+         <input type="button" onclick="logout()" value="로그아웃">
+     </div>
+  <style>
+    #container {
+      width: 70%;
+      margin: 0 auto;     
+      padding-top: 10%;   
+    }
+     
+    #list {
+      text-align: center;
+    }
+   
+    #write {
+      text-align: right;
+    }
+     
+    /* Bootstrap 수정 */
+    .table > thead {
+      background-color: #b3c6ff;
+    }
+    .table > thead > tr > th {
+      text-align: center;
+    }
+    .table-hover > tbody > tr:hover {
+      background-color: #e6ecff;
+    }
+    .table > tbody > tr > td {
+      text-align: center;
+    }
+    .table > tbody > tr > #title {
+      text-align: left;
+    }
+     
+    div > #paging {
+      text-align: center;
+    }
+     
+    .hit {
+      animation-name: blink;
+      animation-duration: 1.5s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+     
+    }
+     
+  
+    @keyframes blink {
+      from {color: white;}
+      30% {color: yellow;}
+      to {color: red; font-weight: bold;}
+     
+    }
+  </style>
+</head>
+<body>
+
+   
+    <div id="list">
+      <h1><b>음식리스트</b></h1>
+    </div>
+     
+    <div id="write">
+      <input type="button" id="tag_sub" onclick="login_sub()" value="음식추가하기">
+      <p>
+      <input type="button" id="tagID" value="음식 추가" style="width:80;display:none;" onclick="location.href='/food/add'">
+      </p>
+     
+    <div>
+      <% foods.forEach(function(item) { %>
+      <table class="table table-striped table-bordered table-hover">
+         
+         <thead>
+          <tr>
+            <th width="10%">번호</th>
+            <th width="30%">분류</th>
+            <th width="40%">설명</th>
+            <th width="20%">수정</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+           
+         <tr>
+            <td><%= item.food %></td>
+            <td><%= item.kind %></td>
+            <td><%= item.explanation %></td>    
+            <td><h2><a href='/foods/<%= item.id %>'>수정하기</a></h3></td>
+     
+                  
+         </tr>
+        </tbody>
+      </table>
+      <% }) %>
+      <script>
+         $(document).ready(function () {
+            console.log('ready!');
+         });
+   
+         function login() {
+            var id = $("#userId").val();
+            var pw = $("#userPw").val();
+            $.ajax({
+               url: '/login',
+               type: 'post',
+               data: `id=${id}&password=${pw}`
+            }).done((data) => {
+              
+               alert('로그인 성공');
+               $("#login-result").text(data);
+               $("#tagID").show(); 
+               $("#tag_sub").hide();  
+            }).fail((err) => {
+                        
+               alert('로그인 실패');
+               $("#login-result").text(err.statusText);
+            });
+         }
+   
+         function login_sub() {
+            var id = $("#userId").val();
+            var pw = $("#userPw").val();
+   
+            $.ajax({
+               url: '/login',
+               type: 'post',
+               data: `id=${id}&password=${pw}`
+            }).done((data) => {
+              
+               alert('로그인 성공');
+               $("#login-result").text(data);
+               $("#tagID").show();
+            }).fail((err) => {
+                      
+               alert('로그인 하시면 음식 추가 가능합니다.');
+               $("#loginform").show();  
+               $("#login-result").text(err.statusText);
+            });
+         }
+   
+         function logout() {
+            $.ajax({
+               url: '/logout',
+               type: 'delete'
+            }).done((data) => {
+              
+               $("#login-result").text("로그아웃 성공");  
+            }).fail((err) => {
+                        
+               $("#login-result").text("로그아웃 실패");
+            });
+         }
+           
+         </script>
+   
+     
+    </div>
+  </div>
+</body>
+</html>
+

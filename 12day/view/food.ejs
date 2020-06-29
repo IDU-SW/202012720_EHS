@@ -2,6 +2,10 @@
 <head>
    <meta charset="UTF-8" />
     <title>food_list</title>
+    <link href="../fonts/style.css" rel="stylesheet" type="text/css">
+	<style>
+		* { font-family: 'Godo', 'Sans-serif'; }
+	</style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
@@ -14,8 +18,9 @@
         <input type="button" onclick="login()" value="로그인">
         <input type="button" onclick="logout()" value="로그아웃">
     </div>
-
-    <h3>(음식 목록)</h3>
+    <div id="contain">
+      <div id="title">
+    <h1>음식 목록</h1>
     <br>
 
     <% foods.forEach(function(item) { %>
@@ -32,6 +37,8 @@
     <p>
     <input type="button" id="tagID" value="음식 추가" style="width:80;display:none;" onclick="location.href='/food/add'">
     </p>
+   </div>
+</div>
     
  <script>
       $(document).ready(function () {
