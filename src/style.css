@@ -1,0 +1,113 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+* {color: #757575;font-family: 'Roboto', sans-serif;}
+body {background: #e3e3e3;}
+a {text-decoration: none;}
+
+/* mixins */
+.container {
+	max-width: 1260px;
+	padding: 0 10px;
+	margin: 0 auto;
+}
+.card-box {
+	background: #ffffff;
+	margin-bottom: 10px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+	border-radius: 2px;
+}
+.card-box .title {
+	color: #191919;
+	padding: 15px;
+	margin: 0 0 15px 0;
+	font-weight: bold;
+}
+.card-box .divider {
+	margin: 0;
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.card-box .right-btn-group {
+	padding: 15px;
+	text-align: right;
+}
+.card-box .right-btn-group button {
+	color: #2296f2;
+	border: 0;
+	background: transparent;
+	padding: 5px 10px;
+}
+.padding-15 {
+	padding: 15px;
+}
+
+/* DOM */
+#header {
+	background: #ffffff;
+	line-height: 26px;
+	font-size: 20px;
+	padding: 15px;
+	position: relative;
+	text-align: center;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
+}
+#header .home {
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	font-size: 26px;
+}
+#header .github {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	font-size: 26px;
+}
+
+#react-boxes {
+	margin-top: 10px;
+}
+
+.settings ul {
+	list-style: none;
+	margin: 0;
+	padding: 0 15px 15px 15px;
+}
+.settings ul li {margin-top: 25px;}
+.settings ul li:first-child {margin-top: 0;}
+.settings ul .input-text label {
+	display: block;
+	font-size: 14px;
+	color: #7b7b7b;
+}
+.settings ul .input-text input {
+	border:0;
+	border-bottom: 1px solid #bdbdbd;
+	border-radius: 0;
+	font-size: 18px;
+	display: block;
+	width: 100%;
+	padding: 5px 0;
+	color: #191919;
+}
+.settings .right-btn-group {padding-top: 30px;}
+
+.count-down {text-align: center;}
+.count-down .message {
+	font-size: 24px;
+	line-height: 30px;
+}
+.count-down .time {
+	font-size: 72px;
+	line-height: 90px;
+}
+.count-down .time[data-status="near"] {color: #ac130d;}
+.count-down .time[data-status="done"] {color: #4285f4;}
+
+.message-box .message {
+	padding: 15px;
+	text-align: center;
+	font-size: 24px;
+	line-height: 30px;
+}
