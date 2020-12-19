@@ -1,3 +1,7 @@
+# 간단한 숫자 누르기 게임
+  타이머기능 
+  숫자순서대로 빠르게 누르기
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
